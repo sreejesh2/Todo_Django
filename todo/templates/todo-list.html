@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Home
+{% endblock title %}
+
+
+{% block content %}
+{% include "navbar.html" %}
+<div class="container ">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            {% for msg in messages %}
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{msg}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% else %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{msg}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <h1 class="text-center text-white mt-4">All Todos</h1>
+
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            {% for task in tasks %}
+
+            <div class="todo-box d-flex justify-content-between border border-3 border-secondary mb-4">
+                <div class="d-flex">
+                    <div class="tikdiv"><a class="tik" href="{%url 'completed' task.id%}"><i class="fa-solid fa-check"></i></a></div>
+                    {% if task.status == True %}
+
+                    <h3 class=" todoname text-decoration-line-through">{{task.task_name}}</h3>
+                    {% else %}
+                    <h3 class=" todoname">{{task.task_name}}</h3>
+                    {% endif %}
+
+                </div>
+
+
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{%url 'detail' task.id%}"><i class="me-3 actions fa-solid fa-eye"></i>View</a></li>
+                        <li><a class="dropdown-item" href="{%url 'edit' task.id%}"><i
+                                    class="me-3 actions fa-solid fa-pen-to-square"></i>Edit</a></li>
+                        <li><a class="dropdown-item" href="{% url 'delete' task.id%}"><i class="me-3 actions fa-solid fa-trash"></i>Delete</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            {% endfor %}
+        </div>
+        <div class="col-3">
+            <a class="addtodo btn text-white btn-primary d-flex align-items-center" href="{%url 'add-todo'%}"><i class="fa-solid fa-plus"></i><span>Create Todo</span>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

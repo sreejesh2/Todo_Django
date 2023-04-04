@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Home
+{% endblock title %}
+
+
+{% block content %}
+{% include "navbar.html" %}
+<div class="container ">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            {% for msg in messages %}
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+             <strong>{{msg}}</strong> 
+             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+           </div>
+            {% else %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+             <strong>{{msg}}</strong> 
+             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+           </div>
+            {% endif %}
+         {% endfor %}
+        </div>
+        <div class="col-4"></div>
+    </div>
+ <h1 class="text-center text-white mt-4">Welcome  <span class="text-warning">{{request.user}}</span></h1>
+ <a class="text-center btn btn-info" href="{%url 'all-todo'%}">All Todos</a>
+</div>
+
+{% endblock content %}

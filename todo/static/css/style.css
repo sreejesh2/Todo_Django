@@ -1,0 +1,50 @@
+.todo-box{
+    background-color:aliceblue;
+    padding: 15px;
+    
+    
+}
+.tikdiv{
+    border: 2px solid black;
+    margin-right: 15px;
+    border-radius: 2px;
+
+}
+.tik{
+    padding: 5px;
+    margin-top: 6px;
+    font-size: 25px;
+    color: rgb(21, 106, 37);
+}
+.fa-solid{
+    font-size: 25px;
+}
+.dropdown-toggle::after {
+    content: none;
+}
+.actions{
+    font-size: 20px;
+}
+.addtodo{
+    width: 140px;
+    box-shadow: rgba(206, 206, 220, 0.25) 0px 30px 60px -12px inset, rgba(242, 237, 237, 0.3) 0px 18px 36px -18px inset;
+}
+.fa-plus{
+    font-size: 20px;
+    margin-right: 5px;
+ 
+}
+.tdoname{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.login-image{
+    margin: 50px;
+    width: 70%;
+    height: 70vh;
+}
+.register-img{
+    width:100%;
+    height: 80vh;
+    margin-top: 70px;
+    border-radius: 20px;
+}
